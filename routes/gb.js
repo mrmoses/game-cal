@@ -4,7 +4,7 @@ var giantBombApi = require('../giantBombApi');
 
 
 router.get('/releases', function (req, res) {
-  giantBombApi.getReleases(function (err, releases) {
+  giantBombApi.getReleases(req.query, function (err, releases) {
     if (err) {
         return console.error(err);
     }

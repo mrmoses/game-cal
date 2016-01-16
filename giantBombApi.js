@@ -3,20 +3,32 @@ var config = require('./config');
 
 var baseUrl = 'http://www.giantbomb.com/api';
 
-function get(resource, filters, cb) {
+function get(resource, params, cb) {
     
     // &filter=field:value,field:value
     var filterString = '';
-    for (var filter in filters) {
-        if (filterString) {
-            filterString += ',';
-        }
-        filterString += filter + ':' + filters[filter];
+    if(params.filter) {
+        filterString = params.filter;
+        // for (var filter in params.filter) {
+        //     if (filterString) {
+        //         filterString += ',';
+        //     }
+        //     filterString += filter + ':' + params.filter[filter];
+        // }
     }
     
     var urlQueryString = '';
     if (filterString) {
         urlQueryString += '?filter=' + filterString;
+    }
+    
+    var sortString = '';
+    if(params.sort) {
+        sortString = params.sort;
+    }
+    
+    if (sortString) {
+        urlQueryString += (urlQueryString ? '&' : '?') + 'sort=' + sortString;
     }
     
     // add api key and json format
@@ -53,6 +65,6 @@ function get(resource, filters, cb) {
 }
 
 
-exports.getReleases = function (cb) {
-  return get('releases', null, cb);
+exports.getReleases = function (params, cb) {
+  return get('releases', params, cb);
 }
