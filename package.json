@@ -1,13 +1,13 @@
 {
-  "name": "chat-example",
+  "name": "game-cal",
   "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
+  "description": "",
   "main": "server.js",
   "repository": "",
-  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "author": "",
   "dependencies": {
-    "async": "~0.2.8",
-    "express": "~3.2.4",
-    "socket.io": "~0.9.14"
+    "async": "~1.5.2",
+    "express": "~4.13.3",
+    "request": "~2.67.0"
   }
 }
